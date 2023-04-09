@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h2 class="display-5 mt-5 mb-5">Desencriptar Texto</h2>
+  <%= form_with(model: @decrypt, url: decrypts_path, method: :post, class: "needs-validation", novalidate: true) do |form| %>
+    <% if @decrypt.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+        <% @decrypt.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <div class="mb-3">
+      <%= form.label :enc_message, 'Ingrese el texto a desencriptar', class: "form-label" %>
+      <%= form.text_area :enc_message, class: "form-control", rows: 5, required: true %>
+      <div class="invalid-feedback">
+        Por favor ingresa el texto que deseas desencriptar.
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <%= form.submit "Desencriptar", class: "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
+</div>

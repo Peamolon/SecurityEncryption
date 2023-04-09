@@ -1,0 +1,27 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Mensaje encriptado</h5>
+          <hr>
+          <p class="card-text"><%= @encryption.encrypted_message %></p>
+          <hr>
+          <p class="card-text"><strong>Clave A:</strong> <%= @encryption.a %></p>
+          <p class="card-text"><strong>Clave B:</strong> <%= @encryption.b %></p>
+          <hr>
+          <p class="card-text"><strong>Mensaje original:</strong></p>
+          <p class="card-text"><%= @encryption.message %></p>
+          <hr>
+          <%= link_to "Volver", root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

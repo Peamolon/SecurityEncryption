@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  decrypt: one
+  decrypted_message: MyString
+  error_log: MyString
+  correspondence: MyString
+
+two:
+  decrypt: two
+  decrypted_message: MyString
+  error_log: MyString
+  correspondence: MyString
