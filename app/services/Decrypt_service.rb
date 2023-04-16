@@ -50,7 +50,6 @@ class DecryptService
 
     def solve_system(value1, value2, value3, value4)
         b = value3
-        puts "value 1 = #{value1} value 2 = #{value2} value 3 = #{value3} value 4 = #{value4}"
         a = ((value1-b)* inverse(value2,27))%27
         [a, b]
     end
