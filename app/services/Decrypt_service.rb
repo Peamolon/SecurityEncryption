@@ -72,7 +72,7 @@ class DecryptService
         frequency
     end
 
-    #private
+    private
 
     def inverse(a, m=27)
         raise "NO INVERSE - #{a} and #{m} not coprime" unless a.gcd(m) == 1
