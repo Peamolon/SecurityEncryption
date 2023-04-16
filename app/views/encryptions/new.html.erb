@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h2 class="display-5 mt-5 mb-5">Encriptar Texto</h2>
+  <%= form_with(model: @encryption, url: encryptions_path, method: :post, class: "needs-validation", novalidate: true) do |form| %>
+    <% if @encryption.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+        <% @encryption.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <div class="mb-3">
+      <%= form.label :message, class: "form-label" %>
+      <%= form.text_area :message, class: "form-control", rows: 5, required: true %>
+      <div class="invalid-feedback">
+        Por favor ingresa el texto que deseas encriptar/desencriptar.
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <%= form.label :a, class: "form-label" %>
+        <%= form.number_field :a, class: "form-control", required: true %>
+        <div class="invalid-feedback">
+          Por favor ingresa un valor numérico para la clave "a".
+        </div>
+      </div>
+      <div class="col">
+        <%= form.label :b, class: "form-label" %>
+        <%= form.number_field :b, class: "form-control", required: true %>
+        <div class="invalid-feedback">
+          Por favor ingresa un valor numérico para la clave "b".
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <%= form.submit "Encriptar", class: "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
+</div>
+

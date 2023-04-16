@@ -1,0 +1,49 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Mensaje encriptado</h5>
+          <hr>
+          <p class="card-text"><%= @decrypt.enc_message %></p>
+          <hr>
+          <%= pie_chart @chart_data, legend: 'right', colors: ['#2ecc71', '#3498db', '#95a5a6', '#9b59b6', '#f1c40f', '#e67e22', '#e74c3c'] %>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Mensaje Descifrado</h5>
+          <% if @decrypt_tries.any? %>
+            <% @decrypt_tries.each do |decrypt_try| %>
+              <h5>Intento con <%=decrypt_try.correspondence %></h5>
+              <hr>
+              <% if decrypt_try.decrypted_message.present? %>
+                <p class="card-text"><%= decrypt_try.decrypted_message %></p>
+                <hr>
+                  <p class="card-text"><strong>Clave A:</strong> <%= decrypt_try.a %></p>
+                  <p class="card-text"><strong>Clave B:</strong> <%= decrypt_try.b %></p>
+                <hr>
+              <% else %>
+                <p class="card-text text-danger">No se pudo descifrar el mensaje.</p>
+                <p class="card-text"><%= decrypt_try.error_log %></p>
+              <% end %>
+              <hr>
+            <% end %>
+          <% else %>
+            <p class="card-text text-danger">No se han realizado intentos de descifrado.</p>
+          <% end %>
+          <%= link_to "Volver", root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
